@@ -1,4 +1,11 @@
-const menu = ["Martabak Coklat", "Martabak Keju", "Pancake"];
+const menu = {
+  "Martabak Coklat":20000,
+  "Martabak Keju":22000,
+  "Pancake":15000
+};
+
+const menuItem = Object.keys(menu);
+const menuPrice = Object.values(menu);
 
 let slideIndex = 1;
 showSlides(slideIndex);
@@ -34,17 +41,16 @@ setInterval(() => {
 }, 4000);
 
 const price = document.querySelectorAll(".price");
-const martabakCoklat = 20000;
-const martabakKeju = 22000;
-const pancake = 15000;
+const item = document.querySelectorAll(".item");
+for (let i = 0; i < item.length; i++) {
+  item[i].textContent = menuItem[i];
+  price[i].textContent = menuPrice[i];
+}
 
-price[0].textContent = "Rp. " + martabakCoklat;
-price[1].textContent = "Rp. " + martabakKeju;
-price[2].textContent = "Rp. " + pancake;
 
 const cart = document.querySelector(".cart");
 
 function sumPrice(el) {
   const id = Number(el.dataset.id);
-  cart.textContent = "halo, aku adalah " + menu[id];
+  cart.textContent = "halo, aku adalah " + menuItem[id];
 }
